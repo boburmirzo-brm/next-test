@@ -2,6 +2,7 @@
 import { memo, useEffect, useState } from "react";
 
 const About = () => {
+  // CSR
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {

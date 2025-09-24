@@ -1,11 +1,19 @@
 import { memo } from "react";
+// SSR - server side rendering
+// CSR - client side rendering
+// SSG - static site generation
+// ISR - incremental static regeneration.
 
 const Home = async () => {
-  const response = await fetch(
-    "https://68ca8602430c4476c349d48a.mockapi.io/comment"
-  );
+
+  // const response = await fetch("https://68ca8602430c4476c349d48a.mockapi.io/comment"); // SSG
+  // const response = await fetch("https://68ca8602430c4476c349d48a.mockapi.io/comment", {cache: "force-cache"}); // SSG
+
+  // const response = await fetch("https://68ca8602430c4476c349d48a.mockapi.io/comment", {cache: "no-store"}); // SSR
+
+  const response = await fetch("https://68ca8602430c4476c349d48a.mockapi.io/comment", {next: {revalidate: 60}}); // ISR
+
   const data = await response.json();
-  console.log(data);
 
   return (
     <div>

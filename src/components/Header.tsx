@@ -7,6 +7,8 @@ const Header = () => {
       <h2>Header</h2>
       <Link href={"/"}>Home</Link>
       <Link href={"/about"}>About</Link>
+      <Link href={"/contact"}>Contact</Link>
+      <Link href={"/product"}>Product</Link>
     </div>
   );
 };

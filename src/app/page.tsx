@@ -11,7 +11,7 @@ const Home = async () => {
 
   // const response = await fetch("https://68ca8602430c4476c349d48a.mockapi.io/comment", {cache: "no-store"}); // SSR
 
-  const response = await fetch("https://68ca8602430c4476c349d48a.mockapi.io/comment", {next: {revalidate: 60}}); // ISR
+  const response = await fetch("https://68ca8602430c4476c349d48a.mockapi.io/comment", {next: {revalidate: 60 * 10}}); // ISR
 
   const data = await response.json();
 

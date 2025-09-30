@@ -1,3 +1,4 @@
+import CommentView from "@/components/CommentView";
 import { memo } from "react";
 // SSR - server side rendering
 // CSR - client side rendering
@@ -5,22 +6,15 @@ import { memo } from "react";
 // ISR - incremental static regeneration.
 
 const Home = async () => {
-
-  // const response = await fetch("https://68ca8602430c4476c349d48a.mockapi.io/comment"); // SSG
-  // const response = await fetch("https://68ca8602430c4476c349d48a.mockapi.io/comment", {cache: "force-cache"}); // SSG
-
-  // const response = await fetch("https://68ca8602430c4476c349d48a.mockapi.io/comment", {cache: "no-store"}); // SSR
-
-  const response = await fetch("https://68ca8602430c4476c349d48a.mockapi.io/comment", {next: {revalidate: 60 * 10}}); // ISR
-
+  const response = await fetch(
+    "https://68ca8602430c4476c349d48a.mockapi.io/comment"
+  );
   const data = await response.json();
 
   return (
     <div>
-      <h2>Home Page</h2>
-      {data?.map((item: any) => (
-        <div key={item.id}>{item.text}</div>
-      ))}
+      <h2 className="text-center text-2xl my-4 font-bold">Home Page</h2>
+      <CommentView comments={data} />
     </div>
   );
 };

@@ -1,8 +1,15 @@
 import CommentView from "@/components/CommentView";
 import { memo } from "react";
+// SSR - Server Side Rendering
+// CSR - Client Side Rendering
+// SSG - Static Site Generation
+// ISR - Incremental Static Regeneration
 
 const Contact = async () => {
-  const response = await fetch("https://68ca8602430c4476c349d48a.mockapi.io/comment");
+
+  // const response = await fetch("https://68ca8602430c4476c349d48a.mockapi.io/comment", {cache: "force-cache"}); // SSG
+  // const response = await fetch("https://68ca8602430c4476c349d48a.mockapi.io/comment", {cache: "no-store"}); // SSR
+  const response = await fetch("https://68ca8602430c4476c349d48a.mockapi.io/comment", {next: {revalidate: 60}}); // ISR
   const data = await response.json();
   return (
     <div>
